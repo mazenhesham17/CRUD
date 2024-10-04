@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="en">
+<head>
+    <title>Add Course</title>
+    <style>
+        ul {
+            list-style: none;
+        }
+
+        nav ul {
+            display: flex;
+        }
+
+        nav ul li {
+            margin-right: 5px;
+        }
+
+
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="/teacher">Home</a></li>
+            <li><a href="/teacher/profile">Profile</a></li>
+            <li><a href="/teacher/course">Courses</a></li>
+        </ul>
+    </nav>
+</header>
+<main sec:authorize="isAuthenticated()">
+    <h1>Add Course</h1>
+    <form action="#" th:action="@{/api/course/add}" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"/><br/>
+
+        <label for="active">Active:</label>
+        <input type="checkbox" id="active" name="active"/><br/>
+
+        <label for="registrationDate">Registration Date:</label>
+        <input type="date" id="registrationDate" name="registrationDate"/><br/>
+
+        <button type="submit">Add Course</button>
+    </form>
+</main>
+</body>
+</html>
+

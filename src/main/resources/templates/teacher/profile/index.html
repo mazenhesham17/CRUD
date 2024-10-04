@@ -6,17 +6,19 @@
 <head>
     <title>Profile</title>
     <style>
-        ul{
+        ul {
             list-style: none;
         }
+
         nav ul {
-            display: flex ;
+            display: flex;
         }
+
         nav ul li {
             margin-right: 5px;
         }
 
-        .row{
+        .row {
             display: flex;
         }
 
@@ -28,6 +30,7 @@
         <ul>
             <li><a href="/teacher">Home</a></li>
             <li><a href="/teacher/profile">Profile</a></li>
+            <li><a href="/teacher/course">Courses</a></li>
         </ul>
     </nav>
 </header>
@@ -41,7 +44,7 @@
         <li><strong>Active Status:</strong> <span th:text="${teacher.active}"></span></li>
     </ul>
 
-    <div class="row" >
+    <div class="row">
         <button>
             <a style="text-decoration: none" th:href="@{/teacher/profile/update}">Update Profile</a>
         </button>
