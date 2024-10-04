@@ -2,6 +2,7 @@ package com.siemens.crud.controller;
 
 import com.siemens.crud.dto.CourseDTO;
 import com.siemens.crud.service.course.CourseService;
+import com.siemens.crud.service.enrollment.EnrollmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,9 @@ public class CourseController {
 
     @Autowired
     private CourseService courseService;
+
+    @Autowired
+    private EnrollmentService enrollmentService;
 
     @PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> addJson(@RequestBody CourseDTO courseDTO, Principal principal) {
@@ -40,6 +44,16 @@ public class CourseController {
     public ResponseEntity<String> delete(@PathVariable Long id) {
         courseService.deleteCourse(id);
         return ResponseEntity.ok("Course deleted successfully!");
+    }
+
+    @PostMapping(value = "/enroll/{id}")
+    public ResponseEntity<String> enroll(@PathVariable Long id, Principal principal) {
+        final String studentEmail = principal.getName();
+        if (enrollmentService.alreadyEnrolled(id, studentEmail)) {
+            return ResponseEntity.ok("Student already enrolled!");
+        }
+        enrollmentService.enrollCourse(id, studentEmail);
+        return ResponseEntity.ok("Student enrolled!");
     }
 
     private ResponseEntity<String> handleAddition(CourseDTO courseDTO, String username) {
