@@ -1,8 +1,6 @@
 package com.siemens.crud.viewController;
 
-import com.siemens.crud.mapper.WebUserMapper;
-import com.siemens.crud.model.WebUser;
-import com.siemens.crud.repository.WebUserRepository;
+import com.siemens.crud.service.fetch.FetchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,19 +13,26 @@ import java.security.Principal;
 @RequestMapping("/teacher")
 public class TeacherViewController {
 
-    @Autowired
-    private WebUserRepository webUserRepository;
+    final String prefix = "/teacher";
 
     @Autowired
-    private WebUserMapper webUserMapper;
+    private FetchService fetchService;
 
     @GetMapping
-    public String teacher(Model model, Principal principal) {
-        final String email = principal.getName();
-        WebUser user = webUserRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-        model.addAttribute("teacher", webUserMapper.toDTO(user));
-        return "teacher";
+    public String teacher() {
+        return prefix + "/index";
+    }
+
+    @GetMapping("/profile")
+    public String profile(Model model, Principal principal) {
+        model.addAttribute("teacher", fetchService.fetchUser(principal.getName()));
+        return prefix + "/profile/index";
+    }
+
+    @GetMapping("/profile/update")
+    public String updateProfile(Model model, Principal principal) {
+        model.addAttribute("teacher", fetchService.fetchUser(principal.getName()));
+        return prefix + "/profile/update";
     }
 
 }

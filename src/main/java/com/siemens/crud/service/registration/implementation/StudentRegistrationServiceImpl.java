@@ -1,11 +1,11 @@
-package com.siemens.crud.service.implementation;
+package com.siemens.crud.service.registration.implementation;
 
 import com.siemens.crud.dto.StudentDTO;
 import com.siemens.crud.dto.WebUserDTO;
 import com.siemens.crud.mapper.StudentMapper;
 import com.siemens.crud.model.Student;
 import com.siemens.crud.repository.WebUserRepository;
-import com.siemens.crud.service.RegistrationService;
+import com.siemens.crud.service.registration.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

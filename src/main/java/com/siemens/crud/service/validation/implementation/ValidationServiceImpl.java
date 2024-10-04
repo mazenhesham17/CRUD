@@ -1,7 +1,7 @@
-package com.siemens.crud.service.implementation;
+package com.siemens.crud.service.validation.implementation;
 
 import com.siemens.crud.repository.WebUserRepository;
-import com.siemens.crud.service.ValidationService;
+import com.siemens.crud.service.validation.ValidationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

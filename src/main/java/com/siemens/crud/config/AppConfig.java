@@ -1,8 +1,8 @@
 package com.siemens.crud.config;
 
-import com.siemens.crud.service.RegistrationService;
-import com.siemens.crud.service.implementation.StudentRegistrationServiceImpl;
-import com.siemens.crud.service.implementation.TeacherRegistrationServiceImpl;
+import com.siemens.crud.service.registration.RegistrationService;
+import com.siemens.crud.service.registration.implementation.StudentRegistrationServiceImpl;
+import com.siemens.crud.service.registration.implementation.TeacherRegistrationServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

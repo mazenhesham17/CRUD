@@ -1,8 +1,8 @@
 package com.siemens.crud.controller;
 
 import com.siemens.crud.dto.WebUserDTO;
-import com.siemens.crud.service.RegistrationService;
-import com.siemens.crud.service.ValidationService;
+import com.siemens.crud.service.registration.RegistrationService;
+import com.siemens.crud.service.validation.ValidationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

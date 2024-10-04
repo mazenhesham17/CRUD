@@ -30,6 +30,8 @@ public class SpringSecurityConfig {
                         .loginPage("/login")
                         .permitAll())
                 .authorizeHttpRequests(authorizeRequests -> authorizeRequests
+                        .requestMatchers("/h2-console/**").permitAll()
+                        .requestMatchers("/register/**", "/api/register").permitAll()
                         .requestMatchers("/student/**").hasRole("STUDENT")
                         .requestMatchers("/teacher/**").hasRole("TEACHER")
                         .anyRequest().authenticated())
