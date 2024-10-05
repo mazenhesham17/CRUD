@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="en">
+<head>
+    <title>Update Course</title>
+    <style>
+        ul {
+            list-style: none;
+        }
+
+        nav ul {
+            display: flex;
+        }
+
+        nav ul li {
+            margin-right: 5px;
+        }
+
+
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="/teacher">Home</a></li>
+            <li><a href="/teacher/profile">Profile</a></li>
+            <li><a href="/teacher/course">Courses</a></li>
+            <li><a href="/teacher/show/teacher">Show Teachers</a></li>
+            <li><a href="/teacher/show/student">Show Students</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h1>Teachers</h1>
+
+    <form action="#" th:action="@{/teacher/show/filter}" method="get">
+        <div>
+            <label>Select Filter:</label><br>
+            <input type="radio" name="filterType" id="filterByName" value="name" checked>
+            <label for="filterByName">Name</label><br>
+            <input type="radio" name="filterType" id="filterByEmail" value="email">
+            <label for="filterByEmail">Email</label>
+        </div>
+
+        <div>
+            <label for="searchTerm">Enter Search Term:</label>
+            <input type="text" id="searchTerm" name="searchTerm" required>
+        </div>
+
+        <input type="hidden" name="role" value="TEACHER"/>
+
+        <button type="submit">Filter</button>
+    </form>
+
+    <div th:if="${!#lists.isEmpty(users)}">
+        <h2>Teachers List</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="teacher : ${users}">
+                <td th:text="${teacher.id}"></td>
+                <td th:text="${teacher.name}"></td>
+                <td th:text="${teacher.email}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <p th:if="${#lists.isEmpty(users)}">No teachers found.</p>
+
+</main>
+
+</body>
+</html>
