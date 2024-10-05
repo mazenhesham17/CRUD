@@ -43,6 +43,24 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
     @Override
+    public WebUserDTO updateProfileById(WebUserDTO updateDTO) {
+        WebUser webUser = webUserRepository.findById(updateDTO.getId())
+                .orElseThrow(() -> new EntityNotFoundException("User not found"));
+
+        webUser.setFirstName(updateDTO.getFirstName());
+        webUser.setLastName(updateDTO.getLastName());
+
+        webUserRepository.save(webUser);
+
+        return webUserMapper.toDTO(webUser);
+    }
+
+    @Override
+    public void deleteProfile(Long id) {
+        webUserRepository.deleteById(id);
+    }
+
+    @Override
     public void deleteProfile(String email) {
         webUserRepository.deleteByEmail(email);
     }

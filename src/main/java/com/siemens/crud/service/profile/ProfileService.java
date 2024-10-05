@@ -6,5 +6,9 @@ public interface ProfileService {
 
     WebUserDTO updateProfile(WebUserDTO webUserDTO);
 
+    WebUserDTO updateProfileById(WebUserDTO webUserDTO);
+
+    void deleteProfile(Long id);
+
     void deleteProfile(String email);
 }

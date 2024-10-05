@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <title>Update Student</title>
+    <style>
+        ul {
+            list-style: none;
+        }
+
+        nav ul {
+            display: flex;
+        }
+
+        nav ul li {
+            margin-right: 5px;
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="/teacher">Home</a></li>
+            <li><a href="/teacher/profile">Profile</a></li>
+            <li><a href="/teacher/course">Courses</a></li>
+            <li><a href="/teacher/show/teacher">Show Teachers</a></li>
+            <li><a href="/teacher/show/student">Show Students</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h2>Update Student</h2>
+
+    <form th:action="@{'/teacher/update/' + ${student.id}}" method="post">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" th:value="${student.firstName}"/>
+        <br>
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" th:value="${student.lastName}"/>
+        <br>
+        <button type="submit">Update</button>
+    </form>
+
+</main>
+</body>
+</html>

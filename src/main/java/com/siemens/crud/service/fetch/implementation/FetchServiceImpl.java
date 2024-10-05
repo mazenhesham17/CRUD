@@ -24,4 +24,11 @@ public class FetchServiceImpl implements FetchService {
                 .orElseThrow(() -> new EntityNotFoundException("User not found"));
         return webUserMapper.toDTO(user);
     }
+
+    @Override
+    public WebUserDTO fetchUserById(Long id) {
+        WebUser user = webUserRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("User not found"));
+        return webUserMapper.toDTO(user);
+    }
 }

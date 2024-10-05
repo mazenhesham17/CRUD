@@ -4,4 +4,6 @@ import com.siemens.crud.dto.WebUserDTO;
 
 public interface FetchService {
     WebUserDTO fetchUser(String email);
+
+    WebUserDTO fetchUserById(Long id);
 }

@@ -1,4 +1,4 @@
-package com.siemens.crud.viewController;
+package com.siemens.crud.viewController.teacher;
 
 import com.siemens.crud.dto.FilterDTO;
 import com.siemens.crud.service.filter.FilterService;
