@@ -1,6 +1,6 @@
 package com.siemens.crud.config;
 
-import com.siemens.crud.service.implementation.CustomerUserDetailsServiceImpl;
+import com.siemens.crud.security.implementation.CustomerUserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

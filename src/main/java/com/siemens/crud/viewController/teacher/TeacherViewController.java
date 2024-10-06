@@ -1,9 +1,13 @@
 package com.siemens.crud.viewController.teacher;
 
 import com.siemens.crud.dto.CourseDTO;
+import com.siemens.crud.security.CustomUserDetails;
 import com.siemens.crud.service.course.CourseService;
 import com.siemens.crud.service.fetch.FetchService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,14 +34,14 @@ public class TeacherViewController {
     }
 
     @GetMapping("/profile")
-    public String profile(Model model, Principal principal) {
-        model.addAttribute("teacher", fetchService.fetchUser(principal.getName()));
+    public String profile(Model model, @AuthenticationPrincipal CustomUserDetails userDetails) {
+        model.addAttribute("teacher", fetchService.fetchUser(userDetails.getId()));
         return prefix + "/profile/index";
     }
 
     @GetMapping("/profile/update")
-    public String updateProfile(Model model, Principal principal) {
-        model.addAttribute("teacher", fetchService.fetchUser(principal.getName()));
+    public String updateProfile(Model model, @AuthenticationPrincipal CustomUserDetails userDetails) {
+        model.addAttribute("teacher", fetchService.fetchUser(userDetails.getId()));
         return prefix + "/profile/update";
     }
 
@@ -48,8 +52,8 @@ public class TeacherViewController {
     }
 
     @GetMapping("/course/add")
-    public String addCourse(Model model, Principal principal) {
-        model.addAttribute("teacher", fetchService.fetchUser(principal.getName()));
+    public String addCourse(Model model, @AuthenticationPrincipal CustomUserDetails userDetails) {
+        model.addAttribute("teacher", fetchService.fetchUser(userDetails.getId()));
         return prefix + "/course/add";
     }
 

@@ -22,7 +22,7 @@ public class StudentEditViewController {
 
     @GetMapping("/update/{id}")
     public String updateProfilePage(@PathVariable Long id, Model model) {
-        model.addAttribute("student", fetchService.fetchUserById(id));
+        model.addAttribute("student", fetchService.fetchUser(id));
         return prefix + "/update";
     }
 
