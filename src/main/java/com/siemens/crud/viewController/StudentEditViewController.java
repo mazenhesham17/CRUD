@@ -1,4 +1,4 @@
-package com.siemens.crud.viewController.teacher;
+package com.siemens.crud.viewController;
 
 import com.siemens.crud.dto.WebUserDTO;
 import com.siemens.crud.service.fetch.FetchService;

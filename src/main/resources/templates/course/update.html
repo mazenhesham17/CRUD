@@ -1,39 +1,15 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       lang="en">
 <head>
     <title>Update Course</title>
-    <style>
-        ul {
-            list-style: none;
-        }
-
-        nav ul {
-            display: flex;
-        }
-
-        nav ul li {
-            margin-right: 5px;
-        }
-
-
-    </style>
+    <style th:replace="~{layout :: style}"></style>
 </head>
+
 <body>
-<header>
-    <nav>
-        <ul>
-            <li><a href="/teacher">Home</a></li>
-            <li><a href="/teacher/profile">Profile</a></li>
-            <li><a href="/teacher/course">Courses</a></li>
-            <li><a href="/teacher/show/teacher">Show Teachers</a></li>
-            <li><a href="/teacher/show/student">Show Students</a></li>
-        </ul>
-    </nav>
-</header>
-<main sec:authorize="isAuthenticated()">
+<header th:replace="~{layout :: header}"></header>
+<main>
     <h1>Update Course</h1>
     <form th:action="@{'/api/course/update/' + ${course.id}}" method="post">
 

@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface EnrollmentService {
 
-    List<CourseDTO> getEnrolledCourses(String studentEmail);
+    List<CourseDTO> getEnrolledCourses(Long studentId);
 
-    List<CourseDTO> getAvailableCourses(String studentEmail);
+    List<CourseDTO> getAvailableCourses(Long studentId);
 
-    CourseDTO enrollCourse(Long courseId, String studentEmail);
+    CourseDTO enrollCourse(Long courseId, Long studentId);
 
-    boolean alreadyEnrolled(Long courseId, String studentEmail);
+    boolean alreadyEnrolled(Long studentId, Long courseId);
 }

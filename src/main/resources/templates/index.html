@@ -2,16 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       lang="en">
+<head>
+    <title>Profile</title>
+    <style th:replace="~{layout :: style}"></style>
+</head>
+
 <body>
-<div sec:authorize="isAuthenticated()">
-
-    <div sec:authorize="hasRole('ROLE_TEACHER')">
-        <meta http-equiv="refresh" content="0; URL='/teacher'"/>
-    </div>
-
-    <div sec:authorize="hasRole('ROLE_STUDENT')">
-        <meta http-equiv="refresh" content="0; URL='/student'"/>
-    </div>
-</div>
+<header th:replace="~{layout :: header}"></header>
+<main>
+    <h1 sec:authorize="hasRole('ROLE_TEACHER')">Hello, Teacher</h1>
+    <h1 sec:authorize="hasRole('ROLE_STUDENT')">Hello, Student</h1>
+</main>
 </body>
 </html>
+
+

@@ -5,41 +5,28 @@
       lang="en">
 <head>
     <title>Course List</title>
-    <style>
-        ul {
-            list-style: none;
-        }
-
-        nav ul {
-            display: flex;
-        }
-
-        nav ul li {
-            margin-right: 5px;
-        }
-
-
-    </style>
+    <style th:replace="~{layout :: style}"></style>
 </head>
+
 <body>
-<header>
-    <nav>
-        <ul>
-            <li><a href="/teacher">Home</a></li>
-            <li><a href="/teacher/profile">Profile</a></li>
-            <li><a href="/teacher/course">Courses</a></li>
-            <li><a href="/teacher/show/teacher">Show Teachers</a></li>
-            <li><a href="/teacher/show/student">Show Students</a></li>
-        </ul>
-    </nav>
-</header>
-<main sec:authorize="isAuthenticated()">
+<header th:replace="~{layout :: header}"></header>
+<main>
     <h1>Course List</h1>
-    <a href="/teacher/course/add">Add New Course</a>
-    <table>
+    <button sec:authorize="hasRole('ROLE_TEACHER')">
+        <a style="text-decoration: none" href="/course/add">
+            Add New Course
+        </a>
+    </button>
+    <div sec:authorize="hasRole('ROLE_STUDENT')">
+        <ul>
+            <li><a href="/course">Available Courses</a></li>
+            <li><a href="/course/enrolled">Enrolled Courses</a></li>
+        </ul>
+    </div>
+    <table border="1">
         <thead>
         <tr>
-            <th>ID</th>
+            <th>Course ID</th>
             <th>Name</th>
             <th>Active</th>
             <th>Registration Date</th>
@@ -52,9 +39,9 @@
             <td th:text="${course.name}"></td>
             <td th:text="${course.active}"></td>
             <td th:text="${course.registrationDate}"></td>
-            <td>
+            <td sec:authorize="hasRole('ROLE_TEACHER')">
                 <button>
-                    <a th:href="@{'/teacher/course/update/' + ${course.id}}">Edit</a>
+                    <a style="text-decoration: none" th:href="@{'/course/update/' + ${course.id}}">Edit</a>
                 </button>
                 <form th:action="@{'/api/course/delete/' + ${course.id}}" method="post">
                     <button type="submit"
@@ -63,6 +50,15 @@
                     </button>
                 </form>
 
+            </td>
+            <td sec:authorize="hasRole('ROLE_STUDENT')">
+                <div th:if="${toEnroll}">
+                    <form th:action="@{'/api/course/enroll/' + ${course.id}}" method="post">
+                        <button type="submit">
+                            Enroll
+                        </button>
+                    </form>
+                </div>
             </td>
         </tr>
         </tbody>

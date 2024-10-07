@@ -22,18 +22,18 @@
 <header th:fragment="header">
     <nav sec:authorize="hasRole('ROLE_TEACHER')">
         <ul>
-            <li><a href="/teacher">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li><a href="/profile">Profile</a></li>
-            <li><a href="/teacher/course">Courses</a></li>
+            <li><a href="/course">Courses</a></li>
             <li><a href="/teacher/show/teacher">Show Teachers</a></li>
             <li><a href="/teacher/show/student">Show Students</a></li>
         </ul>
     </nav>
     <nav sec:authorize="hasRole('ROLE_STUDENT')">
         <ul>
-            <li><a href="/student">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li><a href="/profile">Profile</a></li>
-            <li><a href="/student/course">Courses</a></li>
+            <li><a href="/course">Courses</a></li>
         </ul>
     </nav>
 </header>

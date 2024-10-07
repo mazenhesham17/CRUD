@@ -7,15 +7,15 @@ import java.util.Optional;
 
 public interface CourseService {
 
-    Optional<CourseDTO> getCourseById(Long id);
+    CourseDTO getCourseById(Long courseId);
 
     List<CourseDTO> getAllCourses();
 
-    CourseDTO addCourse(CourseDTO courseDTO, String lecturerUsername);
+    CourseDTO addCourse(CourseDTO courseDTO, Long userId);
 
-    CourseDTO updateCourse(Long id, CourseDTO courseDTO);
+    CourseDTO updateCourse(Long courseId, CourseDTO courseDTO);
 
-    void deleteCourse(Long id);
+    void deleteCourse(Long courseId);
 
     boolean alreadyExists(String courseName);
 }
