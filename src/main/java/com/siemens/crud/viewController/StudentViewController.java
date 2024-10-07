@@ -1,10 +1,7 @@
 package com.siemens.crud.viewController;
 
-import com.siemens.crud.security.CustomUserDetails;
 import com.siemens.crud.service.enrollment.EnrollmentService;
-import com.siemens.crud.service.fetch.FetchService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,26 +16,11 @@ public class StudentViewController {
     final String prefix = "/student";
 
     @Autowired
-    private FetchService fetchService;
-
-    @Autowired
     private EnrollmentService enrollmentService;
 
     @GetMapping
     public String student() {
         return prefix + "/index";
-    }
-
-    @GetMapping("/profile")
-    public String profile(Model model, @AuthenticationPrincipal CustomUserDetails userDetails) {
-        model.addAttribute("student", fetchService.fetchUser(userDetails.getId()));
-        return prefix + "/profile/index";
-    }
-
-    @GetMapping("/profile/update")
-    public String updateProfile(Model model, @AuthenticationPrincipal CustomUserDetails userDetails) {
-        model.addAttribute("student", fetchService.fetchUser(userDetails.getId()));
-        return prefix + "/profile/update";
     }
 
     @GetMapping("/course")

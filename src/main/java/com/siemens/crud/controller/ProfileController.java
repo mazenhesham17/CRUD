@@ -30,9 +30,9 @@ public class ProfileController {
         webUserDTO.setLastName(lastName);
         webUserDTO.setPassword(password);
 
-        webUserDTO = profileService.updateProfile(webUserDTO);
+        profileService.updateProfile(webUserDTO);
 
-        return "redirect:/" + webUserDTO.getRole().toLowerCase() + "/profile";
+        return "redirect:/profile";
     }
 
     @PostMapping("/delete")

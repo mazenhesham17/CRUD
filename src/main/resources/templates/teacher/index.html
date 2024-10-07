@@ -2,33 +2,11 @@
 <html lang="en">
 <head>
     <title>Home</title>
-    <style>
-        ul {
-            list-style: none;
-        }
-
-        nav ul {
-            display: flex;
-        }
-
-        nav ul li {
-            margin-right: 5px;
-        }
-
-    </style>
+    <style th:replace="~{layout :: style}"></style>
 </head>
+
 <body>
-<header>
-    <nav>
-        <ul>
-            <li><a href="/teacher">Home</a></li>
-            <li><a href="/teacher/profile">Profile</a></li>
-            <li><a href="/teacher/course">Courses</a></li>
-            <li><a href="/teacher/show/teacher">Show Teachers</a></li>
-            <li><a href="/teacher/show/student">Show Students</a></li>
-        </ul>
-    </nav>
-</header>
+<header th:replace="~{layout :: header}"></header>
 <main>
     <h1>Hello, Teacher</h1>
 </main>

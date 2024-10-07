@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style th:framgent="style">
+        ul {
+            list-style: none;
+            display: flex;
+        }
+
+        ul li {
+            margin-right: 5px;
+        }
+
+        .row {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+<header th:fragment="header">
+    <nav sec:authorize="hasRole('ROLE_TEACHER')">
+        <ul>
+            <li><a href="/teacher">Home</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/teacher/course">Courses</a></li>
+            <li><a href="/teacher/show/teacher">Show Teachers</a></li>
+            <li><a href="/teacher/show/student">Show Students</a></li>
+        </ul>
+    </nav>
+    <nav sec:authorize="hasRole('ROLE_STUDENT')">
+        <ul>
+            <li><a href="/student">Home</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/student/course">Courses</a></li>
+        </ul>
+    </nav>
+</header>
+</body>
+</html>

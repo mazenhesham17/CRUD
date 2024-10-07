@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <title>Update Profile</title>
+    <style th:replace="~{layout :: style}"></style>
+</head>
+<body>
+<header th:replace="~{layout :: header}"></header>
+<main>
+    <h2>Update Profile</h2>
+
+    <form th:action="@{/api/profile/update}" method="post">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" th:value="${user.firstName}"/>
+        <br>
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" th:value="${user.lastName}"/>
+        <br>
+        <label for="password">New Password:</label>
+        <input type="password" id="password" name="password"/>
+        <br>
+        <button type="submit">Update</button>
+    </form>
+
+    <a href="/profile">Back to Profile</a>
+</main>
+</body>
+</html>
